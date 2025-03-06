@@ -1,7 +1,7 @@
 const mineflayer = require('mineflayer')
 
 const bot = mineflayer.createBot({
-  host: 'localhost', // minecraft server ip
+  host: '192.168.0.147', // minecraft server ip
   username: 'Durachok', // username to join as if auth is `offline`, else a unique identifier for this account. Switch if you want to change accounts
   auth: 'offline', // for offline mode servers, you can set this to 'offline'
   port: 25565,              // set if you need a port that isn't 25565
