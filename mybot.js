@@ -9,28 +9,49 @@ const bot = mineflayer.createBot({
   // password: '12345678'      // set if you want to use password-based auth (may be unreliable). If specified, the `username` must be an email
 })
 
+// ВАРИАНТ ДЛЯ БЕЗОПАСНОСТИ. 
+// ЗАПУСК ПРОИСХОДИТ Ч-З КОМАНДУ "node filename.js host port username password" <-- добавь это в Dockerfile
+// const bot = mineflayer.createBot({
+//     host: process.argv[2],
+//     port: parseInt(process.argv[3]),
+//     username: process.argv[4],
+//     password: process.argv[5]
+//   })
+
 bot.once('spawn', function () {
-
-    bot.chat('Привет, сосунки!!!!');
-    
-    });
-
-
-bot.on('chat', function Hi (username,message) {
-    
-    if (message === "Ты бот?") {
-    
-        setTimeout(() => bot.chat(username + " , нет, это ты бот!"), 1000);
-    
-    } else {
-    
-        if(message !== "Ты бот?") return;
-        
-        setTimeout(() => bot.chat(username + " , я тебя не знаю"), 1000);
-    
-    }
+    bot.chat('Привет, сосунки!!!!');    
 });
 
+// bot.on('chat', function Hi (username,message) {
+//     if (message === "Ты бот?") {
+//         setTimeout(() => bot.chat(username + " , нет, это ты бот!"), 1000);
+//     } else {
+//         if(message !== "Ты бот?") return;
+//         setTimeout(() => bot.chat(username + " , я тебя не знаю"), 1000);
+//     }
+// });
+
+
+
+// ---------------------------------
+// Реакции на события в чате
+bot.chatAddPattern(
+    /((П|п)ривет)/
+)
+
+const hi = () => {
+bot.chat('Привет!!')
+}
+
+bot.on('hello', hi)
+// ---------------------------------
+
+
+// TODO: сделать чтобы он оборачивался
+// TODO: сделать чтобы он ходил
+// TODO: сделать чтобы он мог копать
+// TODO: понять как задать размеры для копки
+// TODO: сделать чтобы он мог строить
 
 // Log errors and kick reasons:
 // bot.on('kicked', console.log)
